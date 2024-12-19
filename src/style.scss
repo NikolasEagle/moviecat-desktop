@@ -1,0 +1,14 @@
+body {
+  margin: 0;
+  background: red;
+
+  border-radius: 20px;
+
+  padding: 20px;
+
+  #content {
+    width: 100%;
+
+    height: calc(100vh - 40px);
+  }
+}
