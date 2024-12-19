@@ -5,6 +5,14 @@ const createWindow = () => {
     width: 800,
 
     height: 600,
+
+    frame: false,
+
+    transparent: true,
+
+    webPreferences: {
+      webviewTag: true,
+    },
   });
 
   win.loadFile("src/index.html");
