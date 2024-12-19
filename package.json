@@ -12,6 +12,7 @@
   "description": "",
   "type": "module",
   "devDependencies": {
-    "electron": "^33.2.1"
+    "electron": "^33.2.1",
+    "sass": "^1.83.0"
   }
 }
