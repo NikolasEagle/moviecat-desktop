@@ -10,8 +10,6 @@ document.onreadystatechange = () => {
   }
 };
 
-console.log(123);
-
 function handleWindowControls() {
   document.querySelector("#min").addEventListener("click", () => {
     ipcRenderer.send("TITLE_BAR_ACTION", "MINIMIZE_WINDOW");
@@ -23,5 +21,24 @@ function handleWindowControls() {
 
   document.querySelector("#close").addEventListener("click", () => {
     ipcRenderer.send("TITLE_BAR_ACTION", "CLOSE_APP");
+  });
+
+  const webview = document.querySelector("webview");
+
+  const titlebar = document.querySelector("#titlebar");
+
+  const app = document.querySelector("#app");
+
+  webview.addEventListener("enter-html-full-screen", (event) => {
+    titlebar.style.display = "none";
+    app.style.padding = "0";
+    event.target.style.height = "100vh";
+  });
+
+  webview.addEventListener("leave-html-full-screen", (event) => {
+    titlebar.style.display = "flex";
+    app.style.padding = "0 10px 20px";
+    event.target.style.height = "calc(100vh - 70px)";
+    ipcRenderer.send("PLAYER_ACTION", "FULLSCREEN");
   });
 }

@@ -1,8 +1,3 @@
-import { dirname } from "node:path";
-import { fileURLToPath } from "node:url";
-
-const __dirname = dirname(fileURLToPath(import.meta.url));
-
 import { app, BrowserWindow, ipcMain } from "electron";
 
 import path from "path";
@@ -21,8 +16,6 @@ function handleTitleBarActions(winObj, args) {
   }
 }
 
-console.log(path.join(__dirname, "src/render.js"));
-
 const createWindow = () => {
   const win = new BrowserWindow({
     width: 800,
@@ -31,12 +24,14 @@ const createWindow = () => {
 
     frame: false,
 
-    transparent: true,
+    transparent: false,
+
+    fullscreen: false,
 
     webPreferences: {
       webviewTag: true,
       nodeIntegration: true,
-      preload: path.join(__dirname, "src/render.cjs"),
+      preload: path.resolve("src/render.cjs"),
     },
   });
 
@@ -44,7 +39,13 @@ const createWindow = () => {
     handleTitleBarActions(win, args);
   });
 
-  //win.webContents.openDevTools();
+  ipcMain.on("PLAYER_ACTION", (_, args) => {
+    if (!win.isFullScreen()) {
+      win.setFullScreen(false);
+    }
+  });
+
+  win.webContents.openDevTools();
 
   win.loadFile("src/index.html");
 };
