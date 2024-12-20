@@ -18,6 +18,10 @@ function handleTitleBarActions(winObj, args) {
 
 const createWindow = () => {
   const win = new BrowserWindow({
+    minWidth: 800,
+
+    minHeight: 600,
+
     width: 800,
 
     height: 600,
@@ -25,6 +29,8 @@ const createWindow = () => {
     frame: false,
 
     backgroundColor: "#222",
+
+    icon: "src/logo96.png",
 
     webPreferences: {
       webviewTag: true,
@@ -42,7 +48,24 @@ const createWindow = () => {
   });
 
   ipcMain.on("FULLSCREEN_OFF", () => {
+    win.setFullScreen(true);
     win.setFullScreen(false);
+  });
+
+  win.on("unmaximize", () => {
+    win.webContents.send("unmaximized");
+  });
+
+  win.on("maximize", () => {
+    win.webContents.send("maximized");
+  });
+
+  win.webContents.on("did-stop-loading", () => {
+    if (win.isMaximized()) {
+      win.webContents.send("maximized");
+    } else {
+      win.webContents.send("unmaximized");
+    }
   });
 
   //win.webContents.openDevTools();

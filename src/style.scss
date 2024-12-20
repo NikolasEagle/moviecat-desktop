@@ -63,6 +63,8 @@ body {
     }
 
     #controls {
+      display: flex;
+      gap: 5px;
       button {
         cursor: pointer;
         background: none;
@@ -86,10 +88,22 @@ body {
         }
       }
       #max {
+        display: flex;
         background-size: 60%;
         background-image: url(maximize.svg);
         &:hover {
           background-image: url(maximize_hover.svg);
+          background-color: #777;
+          color: #222;
+          outline: none;
+        }
+      }
+      #restore {
+        display: none;
+        background-size: 60%;
+        background-image: url(restore.svg);
+        &:hover {
+          background-image: url(restore_hover.svg);
           background-color: #777;
           color: #222;
           outline: none;

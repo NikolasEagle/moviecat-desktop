@@ -48,6 +48,10 @@ body #titlebar #drag-area {
   width: calc(100% - 165px);
   -webkit-app-region: drag;
 }
+body #titlebar #controls {
+  display: flex;
+  gap: 5px;
+}
 body #titlebar #controls button {
   cursor: pointer;
   background: none;
@@ -71,11 +75,23 @@ body #titlebar #controls #min:hover {
   outline: none;
 }
 body #titlebar #controls #max {
+  display: flex;
   background-size: 60%;
   background-image: url(maximize.svg);
 }
 body #titlebar #controls #max:hover {
   background-image: url(maximize_hover.svg);
+  background-color: #777;
+  color: #222;
+  outline: none;
+}
+body #titlebar #controls #restore {
+  display: none;
+  background-size: 60%;
+  background-image: url(restore.svg);
+}
+body #titlebar #controls #restore:hover {
+  background-image: url(restore_hover.svg);
   background-color: #777;
   color: #222;
   outline: none;

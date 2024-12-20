@@ -1,5 +1,15 @@
 if (window.process) {
   var { ipcRenderer } = window.require("electron");
+
+  ipcRenderer.on("unmaximized", () => {
+    document.querySelector("#restore").style.display = "none";
+    document.querySelector("#max").style.display = "flex";
+  });
+
+  ipcRenderer.on("maximized", () => {
+    document.querySelector("#restore").style.display = "flex";
+    document.querySelector("#max").style.display = "none";
+  });
 } else {
   document.getElementById("titlebar").style.display = "none";
 }
@@ -16,6 +26,10 @@ function handleWindowControls() {
   });
 
   document.querySelector("#max").addEventListener("click", () => {
+    ipcRenderer.send("TITLE_BAR_ACTION", "MAXIMIZE_WINDOW");
+  });
+
+  document.querySelector("#restore").addEventListener("click", () => {
     ipcRenderer.send("TITLE_BAR_ACTION", "MAXIMIZE_WINDOW");
   });
 
