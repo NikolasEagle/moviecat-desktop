@@ -34,10 +34,32 @@ body {
       }
     }
 
+    #reload {
+      cursor: pointer;
+      background: none;
+      background-repeat: no-repeat;
+      background-position: center;
+      border: none;
+      outline: none;
+      width: 30px;
+      height: 30px;
+      border-radius: 5px;
+      transition: 0.5s;
+      background-size: 70%;
+      background-image: url(reload.svg);
+      margin-left: 5px;
+      &:hover {
+        background-image: url(reload_hover.svg);
+        background-color: #777;
+        color: #222;
+        outline: none;
+      }
+    }
+
     #drag-area {
       height: 30px;
 
-      width: calc(100% - 130px);
+      width: calc(100% - 165px);
 
       -webkit-app-region: drag;
     }

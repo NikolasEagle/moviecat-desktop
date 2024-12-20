@@ -41,4 +41,10 @@ function handleWindowControls() {
     event.target.style.height = "calc(100vh - 70px)";
     ipcRenderer.send("PLAYER_ACTION", "FULLSCREEN");
   });
+
+  const reload = document.querySelector("#reload");
+
+  reload.addEventListener("click", () => {
+    ipcRenderer.send("RELOAD_ACTION");
+  });
 }

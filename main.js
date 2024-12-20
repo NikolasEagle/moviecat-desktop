@@ -39,6 +39,10 @@ const createWindow = () => {
     handleTitleBarActions(win, args);
   });
 
+  ipcMain.on("RELOAD_ACTION", (_, args) => {
+    win.reload();
+  });
+
   ipcMain.on("PLAYER_ACTION", (_, args) => {
     if (!win.isFullScreen()) {
       win.setFullScreen(false);
