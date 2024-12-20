@@ -39,12 +39,12 @@ function handleWindowControls() {
     titlebar.style.display = "flex";
     app.style.padding = "0 10px 20px";
     event.target.style.height = "calc(100vh - 70px)";
-    ipcRenderer.send("PLAYER_ACTION", "FULLSCREEN");
+    ipcRenderer.send("FULLSCREEN_OFF");
   });
 
   const reload = document.querySelector("#reload");
 
   reload.addEventListener("click", () => {
-    ipcRenderer.send("RELOAD_ACTION");
+    ipcRenderer.send("RELOAD");
   });
 }

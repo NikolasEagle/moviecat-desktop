@@ -24,9 +24,7 @@ const createWindow = () => {
 
     frame: false,
 
-    transparent: false,
-
-    fullscreen: false,
+    backgroundColor: "#222",
 
     webPreferences: {
       webviewTag: true,
@@ -39,17 +37,15 @@ const createWindow = () => {
     handleTitleBarActions(win, args);
   });
 
-  ipcMain.on("RELOAD_ACTION", (_, args) => {
+  ipcMain.on("RELOAD", () => {
     win.reload();
   });
 
-  ipcMain.on("PLAYER_ACTION", (_, args) => {
-    if (!win.isFullScreen()) {
-      win.setFullScreen(false);
-    }
+  ipcMain.on("FULLSCREEN_OFF", () => {
+    win.setFullScreen(false);
   });
 
-  win.webContents.openDevTools();
+  //win.webContents.openDevTools();
 
   win.loadFile("src/index.html");
 };
