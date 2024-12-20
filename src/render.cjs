@@ -1,7 +1,7 @@
 if (window.process) {
   var { ipcRenderer } = window.require("electron");
 } else {
-  document.querySelector("#titlebar").style.display = "none";
+  document.getElementById("titlebar").style.display = "none";
 }
 
 document.onreadystatechange = () => {
@@ -9,6 +9,8 @@ document.onreadystatechange = () => {
     handleWindowControls();
   }
 };
+
+console.log(123);
 
 function handleWindowControls() {
   document.querySelector("#min").addEventListener("click", () => {
