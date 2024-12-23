@@ -1,5 +1,5 @@
 {
-  "name": "moviecat-desktop",
+  "name": "moviecat",
   "version": "1.0.0",
   "main": "main.js",
   "scripts": {
@@ -9,10 +9,10 @@
     "make": "electron-forge make"
   },
   "keywords": [],
-  "author": "",
+  "author": "NikolasEagle",
   "license": "ISC",
-  "description": "",
-  "type": "module",
+  "description": "Movie App",
+  "type": "commonjs",
   "devDependencies": {
     "@babel/core": "^7.18.13",
     "@babel/preset-env": "^7.18.10",

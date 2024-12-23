@@ -1,6 +1,6 @@
-import { app, BrowserWindow, ipcMain } from "electron";
+const { app, BrowserWindow, ipcMain } = require("electron");
 
-import path from "path";
+const path = require("path");
 
 function handleTitleBarActions(winObj, args) {
   if (args === "MAXIMIZE_WINDOW") {
@@ -30,14 +30,19 @@ const createWindow = () => {
 
     backgroundColor: "#222",
 
-    icon: "src/logo96.png",
+    icon: "src/icon.png",
 
     webPreferences: {
+      sandbox: false,
       webviewTag: true,
+      enableRemoteModule: true,
       nodeIntegration: true,
-      preload: path.resolve("src/render.cjs"),
+      contextIsolation: false,
+      preload: path.join(__dirname, "src/render.js"),
     },
   });
+
+  //win.webContents.openDevTools();
 
   ipcMain.on("TITLE_BAR_ACTION", (_, args) => {
     handleTitleBarActions(win, args);
@@ -48,7 +53,6 @@ const createWindow = () => {
   });
 
   ipcMain.on("FULLSCREEN_OFF", () => {
-    win.setFullScreen(true);
     win.setFullScreen(false);
   });
 
@@ -67,8 +71,6 @@ const createWindow = () => {
       win.webContents.send("unmaximized");
     }
   });
-
-  //win.webContents.openDevTools();
 
   win.loadFile("src/index.html");
 };
