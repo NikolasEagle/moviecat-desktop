@@ -117,4 +117,11 @@ body #app #content {
   width: 100%;
   height: calc(100vh - 70px);
   box-sizing: border-box;
+  -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+  -webkit-user-modify: read-write-plaintext-only;
+}
+body #app #content:focus {
+  outline: 0;
+  border: none;
+  color: rgba(0, 0, 0, 0);
 }/*# sourceMappingURL=style.css.map */

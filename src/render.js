@@ -47,6 +47,7 @@ function handleWindowControls() {
     titlebar.style.display = "none";
     app.style.padding = "0";
     event.target.style.height = "100vh";
+    event.target.scroll(0, event.target.scrollHeight);
   });
 
   webview.addEventListener("leave-html-full-screen", (event) => {
@@ -54,6 +55,7 @@ function handleWindowControls() {
     app.style.padding = "0 10px 20px";
     event.target.style.height = "calc(100vh - 70px)";
     ipcRenderer.send("FULLSCREEN_OFF");
+    event.target.scroll(0, event.target.scrollHeight);
   });
 
   const reload = document.querySelector("#reload");

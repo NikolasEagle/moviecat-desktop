@@ -42,7 +42,7 @@ const createWindow = () => {
     },
   });
 
-  //win.webContents.openDevTools();
+  win.webContents.openDevTools();
 
   ipcMain.on("TITLE_BAR_ACTION", (_, args) => {
     handleTitleBarActions(win, args);
@@ -53,6 +53,7 @@ const createWindow = () => {
   });
 
   ipcMain.on("FULLSCREEN_OFF", () => {
+    win.setFullScreen(true);
     win.setFullScreen(false);
   });
 
