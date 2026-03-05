@@ -63,10 +63,6 @@ module.exports = {
         ui: {
           chooseDirectory: true,
           license: "LICENSE.txt",
-          images: {
-            banner: "src/wix-banner.bmp",
-            background: "src/wix-background.bmp",
-          },
         },
         shortcutName: "MovieCat",
         programFilesFolderName: "MovieCat",
@@ -79,13 +75,13 @@ module.exports = {
     },
 
     // ZIP архивы для всех платформ
-    {
+    /*{
       name: "@electron-forge/maker-zip",
       platforms: ["darwin", "linux", "win32"],
       config: {
         name: "moviecat",
       },
-    },
+    },*/
   ],
   plugins: [
     {
