@@ -68,7 +68,7 @@ module.exports = {
               createStartMenuShortcut: true,
               shortcutName: "MovieCat",
 
-              license: path.resolve(__dirname, "LICENSE"),
+              license: path.resolve(__dirname, "LICENSE.txt"),
               language: "1049",
 
               artifactName: "moviecat-v${version}.exe",
