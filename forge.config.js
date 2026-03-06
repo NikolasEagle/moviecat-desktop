@@ -49,22 +49,32 @@ module.exports = {
       name: "@felixrieseberg/electron-forge-maker-nsis",
       platforms: ["win32"],
       config: {
-        getAdditionalConfig: () => {
-          return {
-            productName: "MovieCat",
-            artifactName: "moviecat-v${version}.${ext}",
-            oneClick: false,
-            allowToChangeInstallationDirectory: true,
-            createDesktopShortcut: true,
-            createStartMenuShortcut: true,
-            shortcutName: "MovieCat",
-            installerIcon: "src/icon.ico",
-            uninstallerIcon: "src/icon.ico",
-            license: "LICENSE",
-            language: "1049",
-            compression: "maximum"
-          };
-        }
+        options: {
+          productName: "MovieCat",
+          authors: "NikolasEagle",
+          description: "Movie App",
+          version: "1.2.0",
+
+          icon: path.resolve(__dirname, "src/icon.ico"),
+          installerIcon: path.resolve(__dirname, "src/icon.ico"),
+          uninstallerIcon: path.resolve(__dirname, "src/icon.ico"),
+
+          oneClick: false,
+          allowToChangeInstallationDirectory: true,
+          perMachine: true,
+
+          createDesktopShortcut: true,
+          createStartMenuShortcut: true,
+          shortcutName: "MovieCat",
+
+          license: path.resolve(__dirname, "LICENSE"),
+
+          language: 1049,
+
+          compression: "maximum",
+
+          artifactName: "moviecat_v${version}.exe",
+        },
       },
     },
 
