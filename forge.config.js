@@ -44,7 +44,31 @@ module.exports = {
       },
     },
 
-    // 🔹 MSI пакет для Windows (через WiX)
+    // NSIS пакет для Windows
+    {
+      name: "@felixrieseberg/electron-forge-maker-nsis",
+      platforms: ["win32"],
+      config: {
+        getAdditionalConfig: () => {
+          return {
+            productName: "MovieCat",
+            artifactName: "moviecat-v${version}.${ext}",
+            oneClick: false,
+            allowToChangeInstallationDirectory: true,
+            createDesktopShortcut: true,
+            createStartMenuShortcut: true,
+            shortcutName: "MovieCat",
+            installerIcon: "src/icon.ico",
+            uninstallerIcon: "src/icon.ico",
+            license: "LICENSE",
+            language: "1049",
+            compression: "maximum"
+          };
+        }
+      },
+    },
+
+    /* MSI пакет для Windows (через WiX)
     {
       name: "@electron-forge/maker-wix",
       platforms: ["win32"],
@@ -72,7 +96,7 @@ module.exports = {
         localize: false,
         upgradeCode: "aca439d0-b169-4ce3-aab1-5860c129338a",
       },
-    },
+    },*/
 
     // ZIP архивы для всех платформ
     /*{
