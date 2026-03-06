@@ -50,27 +50,35 @@ module.exports = {
       name: "@felixrieseberg/electron-forge-maker-nsis",
       platforms: ["win32"],
       config: {
-        getBuilderOptions: () => ({
-          win: {
-            target: "nsis",
-            icon: path.resolve(__dirname, "src/icon.ico"),
-          },
-          nsis: {
-            oneClick: false,
-            allowToChangeInstallationDirectory: true,
-            perMachine: true,
-            createDesktopShortcut: true,
-            createStartMenuShortcut: true,
-            shortcutName: "MovieCat",
-            installerIcon: path.resolve(__dirname, "src/icon.ico"),
-            uninstallerIcon: path.resolve(__dirname, "src/icon.ico"),
-            license: path.resolve(__dirname, "LICENSE"),
-            language: "1049",
-            artifactName: "moviecat-v${version}.${ext}",
-            menuCategory: "MovieCat",
-            packElevateHelper: true,
-          },
-        }),
+        // 👇 ПРАВИЛЬНЫЙ МЕТОД для этой библиотеки
+        getBuilderOptions: (forgeConfig, forgeConfigExtra) => {
+          return {
+            win: {
+              icon: path.resolve(__dirname, "src/icon.ico")
+            },
+            nsis: {
+              oneClick: false,
+              allowToChangeInstallationDirectory: true,
+              perMachine: true,
+
+              installerIcon: path.resolve(__dirname, "src/icon.ico"),
+              uninstallerIcon: path.resolve(__dirname, "src/icon.ico"),
+
+              createDesktopShortcut: true,
+              createStartMenuShortcut: true,
+              shortcutName: "MovieCat",
+
+              license: path.resolve(__dirname, "LICENSE"),
+              language: "1049",
+
+              artifactName: "moviecat-v${version}.exe",
+
+              packElevateHelper: true,
+              menuCategory: "MovieCat",
+              compression: "maximum"
+            }
+          };
+        }
       },
     },
 
