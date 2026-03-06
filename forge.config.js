@@ -47,41 +47,29 @@ module.exports = {
 
     // NSIS пакет для Windows
     {
-      name: "@felixrieseberg/electron-forge-maker-nsis",
+      name: "electron-forge/maker-nsis",
       platforms: ["win32"],
       config: {
-        // 👇 ПРАВИЛЬНЫЙ МЕТОД для этой библиотеки
-        getBuilderOptions: (forgeConfig, forgeConfigExtra) => {
-          return {
-            win: {
-              icon: path.resolve(__dirname, "src/icon.ico")
-            },
-            nsis: {
-              oneClick: false,
-              allowToChangeInstallationDirectory: true,
-              perMachine: true,
+        icon: path.resolve(__dirname, "src/icon.ico"),
+        setupIcon: path.resolve(__dirname, "src/icon.ico"),
 
-              installerIcon: path.resolve(__dirname, "src/icon.ico"),
-              uninstallerIcon: path.resolve(__dirname, "src/icon.ico"),
+        oneClick: false,
+        allowToChangeInstallationDirectory: true,
+        perMachine: true,
 
-              createDesktopShortcut: true,
-              createStartMenuShortcut: true,
-              shortcutName: "MovieCat",
+        createDesktopShortcut: true,
+        createStartMenuShortcut: true,
+        shortcutName: "MovieCat",
 
-              license: path.resolve(__dirname, "LICENSE.txt"),
-              language: "1049",
+        license: path.resolve(__dirname, "LICENSE.txt"),
 
-              artifactName: "moviecat-v${version}.exe",
+        language: 1049,
 
-              packElevateHelper: true,
-              menuCategory: "MovieCat",
-              compression: "maximum"
-            }
-          };
-        }
+        artifactName: "moviecat-v${version}.exe",
+
+        compression: "maximum"
       },
     },
-
     /* MSI пакет для Windows (через WiX)
     {
       name: "@electron-forge/maker-wix",
